@@ -4,3 +4,13 @@ body{
     font-size: 18px;
     box-sizing: border-box;
 }
+
+#yellow{
+    background-color: yellow;
+}
+#winpic{
+    width: 150px;
+    height: 150px;
+    position: relative;  
+    z-index: 1; 
+}

@@ -12,6 +12,7 @@ var userTotal;
 var guess_number;
 var wins = 0;
 var losses = 0;
+var intervalId;
 
 
 
@@ -39,17 +40,17 @@ function uniquenumbersArr() {
 
     while (tempArr.length < 4) {
         var xnum = randomGenerator(12);
-        console.log("xnum", xnum);
+        // console.log("xnum", xnum);
         var inxVal = tempArr.indexOf(xnum);
-        console.log("inxval", inxVal);
+        // console.log("inxval", inxVal);
         if (inxVal === -1) {
             tempArr.push(xnum);
-            console.log("temparr", tempArr);
+            // console.log("temparr", tempArr);
         };
 
     };
 
-    console.log("returning arr:", tempArr);
+    // console.log("returning arr:", tempArr);
     return tempArr;
 
 }
@@ -74,7 +75,7 @@ function resetGame() {
     $("#totalNum").html(userTotal);
     $("#wins").html(wins);
     $("#losses").html(losses);
-    console.log(cry1, cry2, cry3, cry4, "magicNum:",guess_number);
+    // console.log(cry1, cry2, cry3, cry4, "magicNum:", guess_number);
 }
 
 
@@ -85,7 +86,7 @@ function resetGame() {
 $('.randomnumber').click(function () {
     var id = $(this).attr('id');
 
-    console.log("id of click crystal: ", id);
+    // console.log("id of click crystal: ", id);
     var incrementtor = 0;
 
     switch (id) {
@@ -107,7 +108,7 @@ $('.randomnumber').click(function () {
 
     userTotal += incrementtor;
     $('#totalNum').html(userTotal);
-    console.log("usertotal", userTotal , "increment val:", incrementtor);
+    // console.log("usertotal", userTotal, "increment val:", incrementtor);
 
     //check to see if game won/loss/or continue
     gameResultCheck();
@@ -120,6 +121,7 @@ function gameResultCheck() {
         wins++;
         $('#wins').html(wins);
         resetGame();
+        flashWinImg();
     } else if (userTotal > guess_number) {
         losses++;
         $('#losses').html(losses);
@@ -127,6 +129,19 @@ function gameResultCheck() {
     }
 
 }
+
+function flashWinImg() {
+    var myImg = $('#winpic');
+    // console.log('myImg', myImg);
+    $('#winpic').show();
+    //var dt = new Date();
+    // console.log( dt.getSeconds(), 'bfore' );
+    var intID = setTimeout(function () {
+        $('#winpic').hide();
+        // console.log( dt.getSeconds(),'after ');
+    }, 700);
+}
+
 
 $(document).ready(function () {
     resetGame();

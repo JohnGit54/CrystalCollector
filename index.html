@@ -23,6 +23,7 @@
         <h1 class="text-center">Crystals Collector!</h1>
         <h3 class="text-center">Create the correct combination of gems to match the number shown!</h3>
     </div>
+
     <div class="container">
         <div class="row">
             <!--Rules-->
@@ -44,9 +45,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <!-- Result Panel -->
             <div class="col-lg-6">
-                <div class="panel panel-danger">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"> Magic Crystals</h3>
                     </div>
@@ -55,7 +58,7 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-3">
                                     <div class="thumbnail">
-                                        <img id="crystal1"  class="randomnumber" src="assets/images/crystal1.jpg">
+                                        <img id="crystal1" class="randomnumber" src="assets/images/crystal1.jpg">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
@@ -79,17 +82,24 @@
                 </div>
             </div>
             <div class="col-lg-2">
-                <div class="panel panel-danger">
-                    <div id="total" class="panel-heading">
-                        <h3 class="panel-title">Your Number</h3>
+                <div class="row">
+                    <div class="col-lg-12 panel panel-info">
+                        <div id="total" class="panel-heading">
+                            <h3 class="panel-title">Your Number</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h1 id="totalNum"></h1>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <h1 id="totalNum"></h1>
+                    <div class="row">
+                        <!--jp adding div for winner image to appear up from-->
+                        <div class="col-lg-12" >
+                            <img src="assets/images/winner.png" hidden="true" id="winpic"> </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2">
-                <div class="panel panel-danger">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Number To Match</h3>
                     </div>
@@ -99,7 +109,7 @@
                 </div>
             </div>
             <div class="col-lg-2">
-                <div class="panel panel-danger">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Score</h3>
                     </div>
@@ -114,20 +124,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <script src="assets/javascript/game.js"></script>
 </body>
