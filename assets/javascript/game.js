@@ -1,5 +1,20 @@
 
 
+//----------------
+// Global variables
+//---------------
+
+// make the 4 random number for crystal1-4.
+// from 1 to 12
+var cry1, cry2, cry3, cry4;
+// set counters for html
+var userTotal;
+var guess_number;
+var wins = 0;
+var losses = 0;
+
+
+
 //create function to randomGerate 2 values
 // for cystalrs 1 to 12. for mystery number 19 - 120
 
@@ -13,32 +28,42 @@ var guess_number = randomGenerator(102) + 18;
 $('#numToGuess').html(guess_number);
 
 
-//make the 4 random number for crystal1-4.
-// from 1 to 12
-var cry1, cry2, cry3, cry4;
-// set counters for html
-var userTotal ;
-var guess_number;
 
-var wins = 0;
-var losses = 0;
-// function generateCrystalNums() {
-//     var cry1 = randomGenerator(12);
-//     var cry2 = randomGenerator(12);
-//     var cry3 = randomGenerator(12);
-//     var cry4 = randomGenerator(12);
-//     return { cry1, cry2, cry3, cry4 };
-// }
+
+
+
+// routine to create 4 unique random numbers 1 - 12
+// create empty array . and push random number when indexOf = -1.
+function uniquenumbersArr() {
+    var tempArr = [];
+
+    while (tempArr.length < 4) {
+        var xnum = randomGenerator(12);
+        console.log("xnum", xnum);
+        var inxVal = tempArr.indexOf(xnum);
+        console.log("inxval", inxVal);
+        if (inxVal === -1) {
+            tempArr.push(xnum);
+            console.log("temparr", tempArr);
+        };
+
+    };
+
+    console.log("returning arr:", tempArr);
+    return tempArr;
+
+}
+
 
 function resetGame() {
-
-    cry1 = randomGenerator(12);
-    cry2 = randomGenerator(12);
-    cry3 = randomGenerator(12);
-    cry4 = randomGenerator(12);
+    var tempArr = uniquenumbersArr();
+    cry1 = tempArr[0];
+    cry2 = tempArr[1];
+    cry3 = tempArr[2];
+    cry4 = tempArr[3];
     //set vars to zero = empty html
     userTotal = 0;
-    
+
     //fill in the rest of html - total you guess- 0 to start
     // wims and losses
 
@@ -49,11 +74,11 @@ function resetGame() {
     $("#totalNum").html(userTotal);
     $("#wins").html(wins);
     $("#losses").html(losses);
-    console.log(cry1, cry2, cry3, cry4, guess_number);
+    console.log(cry1, cry2, cry3, cry4, "magicNum:",guess_number);
 }
 
 
-resetGame();
+
 
 
 //add click event to 4 crystals - using randomnumber class placed on it
@@ -82,14 +107,14 @@ $('.randomnumber').click(function () {
 
     userTotal += incrementtor;
     $('#totalNum').html(userTotal);
-    console.log("usertotal", userTotal);
+    console.log("usertotal", userTotal , "increment val:", incrementtor);
 
     //check to see if game won/loss/or continue
-    winChecker();
+    gameResultCheck();
 
 })
 
-function winChecker() {
+function gameResultCheck() {
     //checks to see if game was won or lost. if neither nothing happens
     if (userTotal === guess_number) {
         wins++;
